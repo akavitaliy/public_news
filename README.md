@@ -1,5 +1,4 @@
 # README
-https://medium.com/daily-web-dev/use-bootstrap-4-with-ruby-on-rails-6-and-webpack-fe7300604267
 
 
 This README would normally document whatever steps are necessary to get the
