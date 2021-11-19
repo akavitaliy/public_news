@@ -6,10 +6,10 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: publicnews
-  password: <%= ENV['PUBLICNEWS_DATABASE_PASSWORD'] %>
+
 
 development:
   <<: *default
@@ -25,3 +25,5 @@ test:
 production:
   <<: *default
   database: publicnews
+  username: vitamin
+  password: <%= ENV['publicnews_DATABASE_PASSWORD'] %>
