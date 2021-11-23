@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_133533) do
+ActiveRecord::Schema.define(version: 2021_11_23_190234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.string "titile"
+    t.string "title"
     t.string "body"
     t.integer "created_by"
     t.integer "topic_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_11_20_133533) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["alias"], name: "index_topics_on_alias", unique: true
   end
 
 end
