@@ -1,12 +1,17 @@
 <div class="col-lg-8">
     <article>
         <!-- Post header-->
-        <header class="mb-4">            
+        <header class="mb-4">       
+            <div>
+              <%= link_to "Редактировать", edit_post_path(@post), class: "badge bg-warning text-decoration-none link-light" %>
+              <%= link_to "Удалить", post_path(@post), method: :delete, data: { confirm: 'Действительно удалить?' }, class: "badge bg-danger text-decoration-none link-light" %>
+            </div>     
+            <br>
             <!-- Post meta content-->
             <div class="text-muted fst-italic mb-2">Опубликованно: <%= @post.created_at %></div>
             <!-- Post categories-->
             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>            
         </header>
         <!-- Post title-->
         <h1 class="fw-bolder mb-1"><%= @post.title %></h1>
