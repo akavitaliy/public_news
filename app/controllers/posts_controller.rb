@@ -20,8 +20,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save 
-    redirect_to @post
+    if @post.save 
+      redirect_to @post
+    else 
+      @topics = Topic.all
+      render 'new'
+    end   
   end
 
   def edit
@@ -31,8 +35,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id]) 
-    @post.update(post_params)
-    redirect_to @post
+    if @post.update(post_params)
+      redirect_to @post
+    else 
+      @topics = Topic.all
+      render 'edit'
+    end
   end
 
   def destroy
@@ -48,6 +56,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
+    params[:post][:topic_id] = params[:post][:topic]
     params.require(:post).permit(:topic_id, :title, :body)
   end
   
