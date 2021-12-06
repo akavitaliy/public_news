@@ -26,7 +26,8 @@
 
 	<br>
 	<div class="form-group">
-		<%= f.submit(action == "edit" ? "Save" : "Create", class: "btn btn-primary") %>
+		<%= f.submit(action == "edit" ? "Save" : "Create", class: "btn btn-success") %>
+		<%= link_to "Back", :back, class: "btn btn-primary" %>
 	</div>
 <% end %>
 </div>
