@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'posts/create', to: "posts#create"
   get 'posts/:id/edit', to: "posts#edit"
   get 'posts/:id/update', to: "posts#update"
+  get 'posts', to: 'posts#index'
   resources :topics
   resources :posts
   

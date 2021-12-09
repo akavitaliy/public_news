@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.page params[:page]       
+    page_token = params.has_key?(:older) ? params[:older] : params[:newer]   
+    
+    paginate(page_token)
+
   end
 
   def topic 
      @topic = Topic.find_by(alias: params[:topic])
-     @posts = @topic.posts
+     @posts = @topic.posts     
      render 'index'
   end
 
@@ -60,5 +63,22 @@ class PostsController < ApplicationController
     params.require(:post).permit(:topic_id, :title, :body)
   end
   
-  
+  def paginate(page_token, topic_id = nil)
+    pagination = Services::Pagination.new(page_token, topic_id)
+
+    if page_token.present?
+      if params.has_key?(:newer)
+        @posts = pagination.newer
+      else 
+        @posts = pagination.older
+      end  
+    else 
+      @posts = pagination.first_page
+    end
+
+    @has_newer = pagination.has_newer
+    @has_older = pagination.has_older
+
+    @page_token = pagination.construct_page_token
+  end
 end

@@ -35,9 +35,12 @@
     </div>
     
     <!-- Pagination-->
-    <nav aria-label="Pagination">
-        <hr class="my-0" />
-        <br>
-        <%= paginate @posts %>
-    </nav>
+    <ul class="pagination justify-content-center mb-4">
+        <li class="page-item <% unless @has_newer %> disabled <% end %>" >
+        <a class="page-link" href="/posts/<% if @topic.present? %><%= @topic.alias %><% end %>?newer=<%= @page_token %>">&larr; Более новые</a>
+        </li>
+        <li class="page-item <% unless @has_older %> disabled <% end %>">
+        <a class="page-link" href="/posts/<% if @topic.present? %><%= @topic.alias %><% end %>?older=<%= @page_token %>">Более старые &rarr;</a>
+        </li>
+    </ul>
 </div>
